@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  height: 100%;
+}
+
+/* HEADER */
+
+.header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid gray;
+}
+
+.header .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.header .top p {
+  margin-left: 20px;
+  z-index: 1;
+}
+
+.header .top h1 {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.header .top .options ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+  justify-content: left;
+}
+
+.header .top .options li {
+  margin-left: 15px;
+  z-index: 1;
+}
+
+.header .mid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.header .mid .categories {
+  margin-left: -20px;
+}
+
+.header .mid .categories ul {
+  list-style: none;
+  display: flex;
+}
+
+.header .mid .categories li {
+  margin-right: 20px;
+}
+
+.header .mid .categories li a {
+  text-decoration: none;
+  color: black;
+}
+
+.header .mid .categories li a:hover {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.header .mid input {
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid black;
+  width: 200px;
+}
+
+.header .btm ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin-left: -20px;
+  height: 30px;
+  align-items: center;
+}
+
+.header .btm li {
+  padding-right: 20px;
+}
+
+/* WIDE FOOTER */
+
+.footer-wide {
+  background-color: black;
+  color: white;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.footer-wide .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.footer-wide .top h4 {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.footer-wide .top ul {
+  list-style: none;
+  margin-left: -30px;
+  font-size: 15px;
+}
+
+.footer-wide .mid {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.footer-wide .btm {
+  margin: 20px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.footer-wide .btm .signature {
+  padding: 20px;
+}
+
+/* SLIM FOOTER */
+.footer-slim {
+  position: relative;
+  margin-top: 130px;
+}
+
+.footer-slim .top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footer-slim .top .about,
+.footer-slim .top .reviews {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  width: 45%;
+}
+
+.footer-slim .top h3,
+.footer-slim .top .more {
+  margin: 20px;
+}
+
+.footer-slim .top h3 {
+  align-items: baseline;
+}
+
+.footer-slim .top .more {
+  font-size: 15px;
+}
+
+.footer-slim .mid {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-slim .mid .box1,
+.footer-slim .mid .box2,
+.footer-slim .mid .box3,
+.footer-slim .mid .box4 {
+  width: 20%;
+  margin: 40px 20px;
+  text-align: center;
+}
+
+.footer-slim .mid h2 {
+  font-size: 20px;
+  margin: 0 0 15px 0;
+}
+
+.footer-slim .mid .box1 p,
+.footer-slim .mid .box2 p,
+.footer-slim .mid .box3 p,
+.footer-slim .mid .box4 p {
+  align-content: center;
+  text-align: center;
+}
+
+.footer-slim .btm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-slim .btm .subscribe {
+  font-size: 15px;
+  margin: 15px 0;
+}
+
+.footer-slim .btm .genderpick input {
+  margin: 15px 10px;
+}
+
+.footer-slim .btm .email input {
+  margin: 15px;
+}
+
+.footer-slim .btm .email #email-form {
+  padding: 0 150px;
+}
+
+.footer-slim .btm .terms p {
+  width: 600px;
+  margin: 20px 0 40px 0;
+  text-align: center;
+  font-size: 14px;
+}
