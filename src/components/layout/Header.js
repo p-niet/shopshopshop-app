@@ -173,6 +173,10 @@ const Header = () => {
   const secondLevelCategoryData =
     menuData[topLevelCategorySelected].children[secondLevelCategorySelected];
 
+  const thirdLevelCategoryDataLeft = secondLevelCategoryData.left.children;
+  const thirdLevelCategoryDataMiddle = secondLevelCategoryData.middle.children;
+  const thirdLevelCategoryDataRight = secondLevelCategoryData.right;
+
   return (
     <nav className="header">
       <div className="top">
@@ -219,16 +223,61 @@ const Header = () => {
                   setSecondCategorySelected(idx);
                 }}
               >
-                {name}
+                <span className="megamenu-trigger">
+                  <p>{name}</p>
+                </span>
               </li>
             );
           })}
         </ul>
       </div>
       <div className="megamenu">
-        <div className="left">{secondLevelCategoryData.left.name}</div>
-        <div className="middle">{secondLevelCategoryData.middle.name}</div>
-        <div className="right">{secondLevelCategoryData.right.name}</div>
+        <div className="left">
+          <div className="third-top">{secondLevelCategoryData.left.name}</div>
+          <div className="third-mid">
+            {thirdLevelCategoryDataLeft.map((thirdCategory, idx) => {
+              const { name, links } = thirdCategory;
+
+              return (
+                <li>
+                  <a href={links}>{name}</a>
+                </li>
+              );
+            })}
+          </div>
+        </div>
+        <div className="middle">
+          <div className="third-top">{secondLevelCategoryData.middle.name}</div>
+          <div className="third-mid">
+            {thirdLevelCategoryDataMiddle.map((text, href, idx) => {
+              const { name } = text;
+              const { links } = href;
+
+              return (
+                <li>
+                  <a href={links}>{name}</a>
+                </li>
+              );
+            })}
+          </div>
+        </div>
+        <div className="right">
+          <div className="third-top">{secondLevelCategoryData.right.name}</div>
+          <div className="third-mid">
+            <img
+              src={thirdLevelCategoryDataRight.imgSrc}
+              alt={thirdLevelCategoryDataRight.text}
+              href={thirdLevelCategoryDataRight.href}
+            />
+          </div>
+          <div className="third-btm">
+            <p>
+              <a href={thirdLevelCategoryDataRight.href}>
+                {thirdLevelCategoryDataRight.text}
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </nav>
   );

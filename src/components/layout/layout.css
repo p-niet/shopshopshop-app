@@ -107,6 +107,60 @@ body {
   padding-right: 20px;
 }
 
+.header .btm li:hover {
+  text-decoration: underline;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+/* MEGAMENU */
+
+.megamenu {
+  display: none;
+  flex-direction: row;
+  margin: 10px 10px;
+  padding-bottom: 5px;
+}
+
+.megamenu .left,
+.megamenu .middle {
+  width: 30%;
+}
+
+.megamenu .right {
+  width: 40%;
+}
+
+.megamenu img {
+  width: 100%;
+}
+
+.third-mid {
+  margin: 10px 0;
+}
+
+.third-mid li {
+  list-style: none;
+  margin-left: 10px;
+}
+
+.megamenu .third-top {
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.megamenu-trigger:hover > .megamenu {
+  display: flex;
+}
+
+.megamenu-trigger p:hover + body {
+  background-color: pink;
+}
+
+.megamenu .third-mid {
+  align-items: center;
+}
+
 /* WIDE FOOTER */
 
 .footer-wide {
