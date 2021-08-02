@@ -1,5 +1,5 @@
 import "./components/layout/layout.css";
-import Header from "./components/layout/Header";
+import Header from "./components/layout/Header/Header";
 import WideFooter from "./components/layout/WideFooter";
 import SlimFooter from "./components/layout/SlimFooter";
 

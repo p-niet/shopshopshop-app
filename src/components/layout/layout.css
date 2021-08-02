@@ -116,10 +116,20 @@ body {
 /* MEGAMENU */
 
 .megamenu {
-  display: none;
+  display: flex;
   flex-direction: row;
   margin: 10px 10px;
   padding-bottom: 5px;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .megamenu .left,
@@ -149,12 +159,8 @@ body {
   cursor: pointer;
 }
 
-.megamenu-trigger:hover > .megamenu {
-  display: flex;
-}
-
-.megamenu-trigger p:hover + body {
-  background-color: pink;
+.megamenu .third-top:hover {
+  text-decoration: underline;
 }
 
 .megamenu .third-mid {
