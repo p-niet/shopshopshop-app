@@ -1,0 +1,80 @@
+.background-blur {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.mobile-header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.main-categories {
+  height: 40px;
+  display: flex;
+  border-bottom: 1px solid black;
+  justify-content: space-evenly;
+  margin: 20px 0px;
+}
+
+.main-categories p {
+  position: relative;
+  width: 33%;
+  text-align: center;
+}
+
+.secondary-categories li {
+  list-style: none;
+}
+
+.secondary-categories ul {
+  margin-block-start: 0px;
+  padding: 0px;
+}
+
+.secondary-categories p,
+.third-categories p {
+  height: 40px;
+  margin: 30px 0px;
+  text-align: center;
+  border-bottom: 2px solid rgb(238, 238, 240);
+}
+
+button {
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 44px;
+  flex: 1 1 0%;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  margin: 20px auto;
+  width: 80%;
+}
+
+.third-categories h3 {
+  height: 40px;
+  margin: 30px 0px;
+  padding: 0 30px;
+  border-bottom: 2px solid rgb(238, 238, 240);
+}
+
+.no-scroll {
+  overflow: hidden;
+}

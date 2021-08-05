@@ -19,7 +19,7 @@ body {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 999;
   border-bottom: 1px solid gray;
 }
 
@@ -175,6 +175,7 @@ body {
   position: relative;
   bottom: 0;
   left: 0;
+  margin-bottom: -30px;
 }
 
 .footer-wide .top {
@@ -210,9 +211,16 @@ body {
 }
 
 /* SLIM FOOTER */
+
+@media (min-width: 1024px) {
+  .footer-slim {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}
+
 .footer-slim {
   position: relative;
-  margin-top: 130px;
 }
 
 .footer-slim .top {
@@ -302,4 +310,67 @@ body {
   margin: 20px 0 40px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/* MAIN PAGE */
+
+.categories-container {
+  width: 100%;
+  margin-top: 150px;
+  display: flex;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .categories-container {
+    max-width: 1024px;
+    margin: 150px auto 0 auto;
+  }
+}
+
+.babskie,
+.chlopskie {
+  width: 28%;
+  height: auto;
+}
+
+.double-vert {
+  width: 44%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.categories-container img {
+  width: 100%;
+  background-color: black;
+  z-index: -1;
+  transition: 0.3s ease-in-out;
+  outline: 10px solid white;
+}
+
+.babskie,
+.chlopskie,
+.casual,
+.foruglies {
+  position: relative;
+  margin: 5px;
+  background-color: black;
+}
+
+.categories-container h4 {
+  color: white;
+  font-weight: bolder;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  background-color: black;
+  margin: 5px;
+  padding: 5px;
+}
+
+.categories-container img:hover {
+  background-color: black;
+  opacity: 0.5;
 }
