@@ -3,6 +3,7 @@ import Header from "./components/layout/Header/Header";
 import WideFooter from "./components/layout/WideFooter";
 import SlimFooter from "./components/layout/SlimFooter";
 import MainPage from "./components/layout/MainPage";
+import WideFooterMobile from "./components/layout/WideFooterMobile";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <MainPage />
       <SlimFooter />
       <WideFooter />
+      <WideFooterMobile />
     </div>
   );
 }

@@ -78,3 +78,34 @@ button {
 .no-scroll {
   overflow: hidden;
 }
+
+@media (min-width: 1024px) {
+  .background-blur {
+    display: none;
+    overflow: hidden;
+  }
+
+  .mobile-header {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .mobile-header {
+    width: 70%;
+  }
+
+  .background-blur {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 500px) {
+  .mobile-header {
+    width: 90%;
+  }
+
+  .background-blur {
+    overflow: hidden;
+  }
+}

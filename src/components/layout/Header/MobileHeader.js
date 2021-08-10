@@ -11,12 +11,19 @@ const MobileHeader = ({
   setSecondCategorySelected,
   setIsThirdLevelDisplayed,
   isThirdLevelDisplayed,
+  isMobileMenuVisible,
+  setIsMobileMenuVisible,
 }) => {
   const topLevelCategoryData = menuData[topLevelCategorySelected];
 
   return (
     <>
-      <div className="background-blur"></div>
+      <div
+        className="background-blur"
+        onClick={() => {
+          setIsMobileMenuVisible(false);
+        }}
+      ></div>
       <nav className="mobile-header">
         <div className="main-categories">
           {menuData.map((topLevelCategory, idx) => {
