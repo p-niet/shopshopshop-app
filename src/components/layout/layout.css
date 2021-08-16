@@ -42,6 +42,11 @@ body {
   text-align: center;
 }
 
+.header .top h1 a {
+  text-decoration: none;
+  color: black;
+}
+
 .header .top .options ul {
   list-style: none;
   display: flex;
@@ -453,4 +458,8 @@ body {
     cursor: pointer;
     text-decoration: underline;
   }
+}
+
+.tereska {
+  margin: 200px;
 }

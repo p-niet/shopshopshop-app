@@ -3,12 +3,17 @@ import { menuData } from "../../../api/menuData";
 import { ThirdHeaderLayer } from "./ThirdHeaderLayer";
 import MobileHeader from "./MobileHeader";
 import "./header.css";
+import { useHistory } from "react-router-dom";
+import Search from "../subpages/Search";
 
 const Header = () => {
+  let history = useHistory();
+
   const [topLevelCategorySelected, setTopLevelCategorySelected] = useState(0);
   const [secondLevelCategorySelected, setSecondCategorySelected] = useState(0);
   const [isThirdLevelDisplayed, setIsThirdLevelDisplayed] = useState(false);
   const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
+  const [input, setInput] = useState("");
 
   const topLevelCategoryData = menuData[topLevelCategorySelected];
   const secondLevelCategoryData =
@@ -47,7 +52,9 @@ const Header = () => {
               }}
             ></img>
             <p>Subscribe</p>
-            <h1>SHOPSHOPSHOP</h1>
+            <h1>
+              <a href="/">SHOPSHOPSHOP</a>
+            </h1>
             <div className="options">
               <ul>
                 <li>Language</li>
@@ -76,7 +83,26 @@ const Header = () => {
                 })}
               </ul>
             </div>
-            <input type="text" placeholder="Search..." className="search" />
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <input
+                placeholder="Search..."
+                className="search"
+                type="search"
+                name="search"
+                id="search"
+                value={input}
+                onInput={(e) => setInput(e.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    history.push(`/search/${input}`);
+                  }
+                }}
+              />
+            </form>
           </div>
           <div
             className="btm"
