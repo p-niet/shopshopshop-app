@@ -19,7 +19,10 @@ function App() {
           <Route exact path="/">
             <MainPage />
           </Route>
-          <Route path="/products/:id" children={<Product />}></Route>
+          <Route
+            path="/product/:productId/:productName"
+            children={<Product />}
+          ></Route>
           <Route path="/category/:category" children={<Category />}></Route>
           <Route path="/brand/:brand" children={<Brand />}></Route>
           <Route path="/search/:search" children={<Search />}></Route>
