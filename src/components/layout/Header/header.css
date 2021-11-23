@@ -109,3 +109,71 @@ button {
     overflow: hidden;
   }
 }
+
+/* LANGUAGES */
+
+.lang-picker,
+.login-background {
+  background-color: rgba(0, 0, 0, 0.61);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.langs {
+  background-color: white;
+  color: black;
+  padding: 15vh;
+  text-align: center;
+}
+
+.langs p {
+  padding: 20px;
+  font-size: larger;
+}
+
+.langs a {
+  text-decoration: none;
+  color: black;
+}
+
+.langs a:hover {
+  text-decoration: underline;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-box input {
+  margin: 20px;
+}
+
+.submit {
+  background-color: rgb(34, 34, 34);
+  border-bottom: 1px solid rgb(153, 153, 153);
+  box-shadow: rgb(0 0 0 / 50%) 0px 0px 15px 0px inset;
+  padding: 10px 5%;
+  color: white;
+  font-size: larger;
+}
+
+.login-box {
+  z-index: 99999999999;
+  background-color: white;
+  color: black;
+  padding: 15vh;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

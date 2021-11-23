@@ -5,8 +5,11 @@ import MobileHeader from "./MobileHeader";
 import "./header.css";
 import { useHistory } from "react-router-dom";
 import Search from "../subpages/Search";
+import LanguagePicker from "./LanguagePicker";
+import { useCookies } from "react-cookie";
+import LogIn from "./LogIn";
 
-const Header = () => {
+const Header = ({ lang }) => {
   let history = useHistory();
 
   const [topLevelCategorySelected, setTopLevelCategorySelected] = useState(0);
@@ -14,6 +17,8 @@ const Header = () => {
   const [isThirdLevelDisplayed, setIsThirdLevelDisplayed] = useState(false);
   const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
   const [input, setInput] = useState("");
+  const [isLanguageShown, setIsLanguageShown] = useState(false);
+  const [isLoginShown, setIsLoginShow] = useState(false);
 
   const topLevelCategoryData = menuData[topLevelCategorySelected];
   const secondLevelCategoryData =
@@ -22,6 +27,7 @@ const Header = () => {
   const thirdLevelCategoryDataLeft = secondLevelCategoryData.left.children;
   const thirdLevelCategoryDataMiddle = secondLevelCategoryData.middle.children;
   const thirdLevelCategoryDataRight = secondLevelCategoryData.right;
+  const [cookies] = useCookies();
 
   return (
     <>
@@ -57,10 +63,35 @@ const Header = () => {
             </h1>
             <div className="options">
               <ul>
-                <li>Language</li>
-                <li>Sign in / Sing up</li>
+                <li
+                  onClick={() => {
+                    setIsLanguageShown(true);
+                  }}
+                >
+                  Language: {lang.name}
+                </li>
+                <li
+                  onClick={() => {
+                    setIsLoginShow(true);
+                  }}
+                >
+                  Sign in / Sing up
+                </li>
+                {isLoginShown === true && (
+                  <LogIn setIsLoginShow={setIsLoginShow} lang={lang} />
+                )}
               </ul>
             </div>
+            {isLanguageShown && (
+              <div
+                className="lang-picker"
+                onClick={() => {
+                  setIsLanguageShown(false);
+                }}
+              >
+                <LanguagePicker />
+              </div>
+            )}
           </div>
           <div className="mid">
             <div className="categories">
@@ -71,7 +102,7 @@ const Header = () => {
                   return (
                     <li key={idx}>
                       <a
-                        href={`/${name}`}
+                        href={`/${cookies.Language}/${name}`}
                         onMouseEnter={() => {
                           setTopLevelCategorySelected(idx);
                         }}
@@ -98,7 +129,7 @@ const Header = () => {
                 onInput={(e) => setInput(e.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
-                    history.push(`/search/${input}`);
+                    history.push(`/${lang.isoCode}/search/${input}`);
                   }
                 }}
               />

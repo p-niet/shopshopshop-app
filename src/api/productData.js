@@ -2,7 +2,7 @@ export const productData = [
   {
     id: 666,
     name: "Kiecka od Donatelli",
-    type: "Woman",
+    type: "Women",
     model: "Dress",
     brand: "Versace",
     category: "Dresses",
@@ -30,7 +30,7 @@ export const productData = [
   {
     id: 69,
     name: "Ta kiecka z mięsa",
-    type: "Woman",
+    type: "Women",
     model: "Dress",
     brand: "Senõra Gaga",
     category: "Dresses",

@@ -5,18 +5,18 @@ import { useState } from "react";
 import Pagination from "./Pagination";
 import { useEffect } from "react";
 
-const Brand = ({ lang }) => {
+function Type({ lang }) {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
 
-  let { brand } = useParams();
+  let { type } = useParams();
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const selectedBrand = brand;
+  const selectedType = type;
 
   function setFinalArray() {
-    setItems([...productData.filter((el) => el.brand === selectedBrand)]);
+    setItems([...productData.filter((el) => el.type === selectedType)]);
     return;
   }
 
@@ -33,14 +33,23 @@ const Brand = ({ lang }) => {
   return (
     <>
       <div className="categoryName">
-        <h1 className="category-name">Category: {selectedBrand}</h1>
+        <h1 className="category-name">Category: {type}</h1>
       </div>
       <div className="product-grid">
         {currentItems.map((products) => {
-          const { id, name, brand, model, category, imgURL, price } = products;
+          const {
+            id,
+            name,
+            type,
+            model,
+            brand,
+            category,
+            imgURL,
+            price,
+          } = products;
 
           return (
-            brand === selectedBrand && (
+            type === selectedType && (
               <article className="product-box" key={id}>
                 <Link
                   to={`/${lang.isoCode}/product/${id}/${name}`}
@@ -71,6 +80,6 @@ const Brand = ({ lang }) => {
       )}
     </>
   );
-};
+}
 
-export default Brand;
+export default Type;

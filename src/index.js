@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import LanguageRouter from "./LanguageRouter";
+import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CookiesProvider>
+      <LanguageRouter />
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
