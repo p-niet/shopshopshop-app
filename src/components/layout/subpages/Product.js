@@ -5,8 +5,9 @@ import { productData } from "../../../api/productData";
 import { useState, useEffect } from "react";
 
 const Product = ({ lang }) => {
-  const [color, setColor] = useState();
   const [idxOfColor, setIdxOfColor] = useState(0);
+  const [bigpic, setBigpic] = useState(false);
+  const [keydown, setKeydown] = useState(false);
 
   const { productId, productName } = useParams();
 
@@ -15,15 +16,41 @@ const Product = ({ lang }) => {
   }
 
   const product = productData.find(findId);
+
+  const [color, setColor] = useState(product.options[0].color);
+
   const currentColorSizes = product.options[idxOfColor].sizes;
   const currentColorSizesNames = Object.keys(currentColorSizes);
   const [selectedSize, setSelectedSize] = useState(
     currentColorSizesNames.length > 0 ? currentColorSizesNames[0] : null
   );
+  const [picIndex, setPicIndex] = useState(0);
+
+  const numberOfPics = product.imgURL.length - 1;
 
   useEffect(() => {
-    setColor(product.options[0].color);
-  }, []);
+    function listener(e) {
+      if (e.key === "ArrowRight" && picIndex < numberOfPics) {
+        setPicIndex(picIndex + 1);
+      }
+
+      if (e.key === "ArrowLeft" && picIndex > 0) {
+        setPicIndex(picIndex - 1);
+      }
+
+      if ((e.key === "Escape") & (bigpic !== false)) {
+        setBigpic(false);
+      }
+
+      setKeydown(true);
+    }
+
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+      setKeydown(false);
+    };
+  }, [keydown]);
 
   return (
     <>
@@ -33,7 +60,7 @@ const Product = ({ lang }) => {
             <div className="history-map">
               <p className="product-history">
                 <a href="/">Home</a> {"> "}
-                <a href={`${lang}`}>{product.type}</a> {"> "}
+                <a href={`${lang}/${product.type}`}>{product.type}</a> {"> "}
                 <a href={`${lang}/category/${product.model}`}>
                   {product.model}
                 </a>{" "}
@@ -46,7 +73,31 @@ const Product = ({ lang }) => {
             </div>
             <div className="product-main">
               <div className="img-container">
-                <img src={product.imgURL} alt={product.name} />
+                <div className="secondary-pics">
+                  {product.imgURL.map((pic, idx) => {
+                    return (
+                      <img
+                        src={pic}
+                        key={idx}
+                        alt=""
+                        onClick={() => {
+                          setPicIndex(idx);
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+                <div className="zoom-in">
+                  <figure>
+                    <img
+                      src={product.imgURL[picIndex]}
+                      alt={product.name}
+                      onClick={() => {
+                        setBigpic(true);
+                      }}
+                    />
+                  </figure>
+                </div>
               </div>
               <div className="product-info">
                 <h1 className="brand">{product.brand}</h1>
@@ -112,8 +163,36 @@ const Product = ({ lang }) => {
         </div>
       )}
 
+      {bigpic !== false && (
+        <>
+          <div
+            className="bigpic-background"
+            onClick={() => {
+              setBigpic(false);
+            }}
+          ></div>
+          <div className="bigpic-fullscreen">
+            <div className="bigpic-pic">
+              <img src={product.imgURL[picIndex]} alt="bigpic" />
+            </div>
+            <div className="bigpic-gallery">
+              {product.imgURL.map((pic, idx) => {
+                return (
+                  <img
+                    src={pic}
+                    key={idx}
+                    alt=""
+                    onClick={() => setPicIndex(idx)}
+                  />
+                );
+              })}
+            </div>{" "}
+          </div>
+        </>
+      )}
+
       {product === undefined && (
-        <div className="tereska">SPIERDALAJ, bo {productName} nie istnieje</div>
+        <div className="tereska">{productName} is unavailable.</div>
       )}
     </>
   );

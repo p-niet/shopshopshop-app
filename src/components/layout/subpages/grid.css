@@ -19,6 +19,12 @@
 
   .product-box img {
     height: 200px;
+    width: 130px;
+    object-fit: cover;
+  }
+
+  .singlebox {
+    width: 25vh;
   }
 }
 
@@ -43,6 +49,8 @@
 
   .product-box img {
     height: 375px;
+    width: 250px;
+    object-fit: cover;
   }
 }
 

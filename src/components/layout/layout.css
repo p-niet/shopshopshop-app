@@ -6,6 +6,12 @@
   font-family: "Montserrat", sans-serif;
 }
 
+@media (max-width: 1024px) {
+  * {
+    max-width: 100%;
+  }
+}
+
 body {
   height: 100%;
 }
@@ -29,6 +35,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+  width: 100%;
 }
 
 .header .top p {
@@ -135,9 +142,19 @@ body {
     margin: 50px auto 0 auto !important;
   }
 
+  h4 {
+    font-size: xx-small;
+  }
+
   .header-content .top img {
     display: block;
     z-index: 10000;
+  }
+
+  .header,
+  .header-content,
+  .top h1 {
+    width: 100%;
   }
 }
 
@@ -308,6 +325,16 @@ body {
   margin: 0 0 15px 0;
 }
 
+@media (max-width: 1024px) {
+  .footer-slim .mid h2 {
+    font-size: small;
+  }
+
+  .footer-slim .mid p {
+    font-size: smaller;
+  }
+}
+
 .footer-slim .mid .box1 p,
 .footer-slim .mid .box2 p,
 .footer-slim .mid .box3 p,
@@ -336,77 +363,18 @@ body {
 }
 
 .footer-slim .btm .email #email-form {
-  padding: 0 150px;
+  padding: 0 50px;
+  width: 90%;
 }
 
 .footer-slim .btm .terms p {
-  width: 600px;
   margin: 20px 0 40px 0;
   text-align: center;
   font-size: 14px;
 }
 
-/* MAIN PAGE */
-
-.categories-container {
-  width: 100%;
-  margin-top: 150px;
-  display: flex;
-  position: relative;
-}
-
-@media (min-width: 1024px) {
-  .categories-container {
-    max-width: 1024px;
-    margin: 150px auto 0 auto;
-  }
-}
-
-.babskie,
-.chlopskie {
-  width: 28%;
-  height: auto;
-}
-
-.double-vert {
-  width: 44%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.categories-container img {
-  width: 100%;
-  background-color: black;
-  z-index: -1;
-  transition: 0.3s ease-in-out;
-  outline: 10px solid white;
-}
-
-.babskie,
-.chlopskie,
-.casual,
-.foruglies {
-  position: relative;
-  margin: 5px;
-  background-color: black;
-}
-
-.categories-container h4 {
-  color: white;
-  font-weight: bolder;
-  position: absolute;
-  z-index: 1;
-  top: 10px;
-  left: 10px;
-  background-color: black;
-  margin: 5px;
-  padding: 5px;
-}
-
-.categories-container img:hover {
-  background-color: black;
-  opacity: 0.5;
+.email {
+  width: 80%;
 }
 
 /* MOBILE FOOTER */
@@ -436,6 +404,7 @@ body {
   .footer-mobile h4 {
     margin: 10px;
     border-bottom: 1px solid rgb(153, 153, 153);
+    font-size: medium;
   }
 
   .footer-mobile li,

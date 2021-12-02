@@ -1,6 +1,8 @@
 import React from "react";
 import { menuData } from "../../../api/menuData.js";
 import "./header.css";
+import LanguagePicker from "./LanguagePicker.js";
+import LogIn from "./LogIn.js";
 
 const MobileHeader = ({
   topLevelCategorySelected,
@@ -13,11 +15,32 @@ const MobileHeader = ({
   isThirdLevelDisplayed,
   isMobileMenuVisible,
   setIsMobileMenuVisible,
+  lang,
+  setIsLanguageShown,
+  isLanguageShown,
+  name,
+  setName,
+  isLoginShown,
+  setIsLoginShow,
 }) => {
   const topLevelCategoryData = menuData[topLevelCategorySelected];
 
   return (
     <>
+      {isLanguageShown && (
+        <div
+          className="lang-picker"
+          onClick={() => {
+            setIsLanguageShown(false);
+          }}
+        >
+          <LanguagePicker />
+        </div>
+      )}
+
+      {isLoginShown === true && (
+        <LogIn setIsLoginShow={setIsLoginShow} lang={lang} setName={setName} />
+      )}
       <div
         className="background-blur"
         onClick={() => {
@@ -67,8 +90,25 @@ const MobileHeader = ({
               </ul>
             </div>
             <div className="buttons-container">
-              <button className="sign-in">sign in</button>
-              <button className="sign-up">sign up</button>
+              <button
+                className="sign-in"
+                onClick={() => {
+                  setIsLoginShow(true);
+                }}
+              >
+                {!name && "Log in"}
+                {name != undefined && `Logged in: ${name}`}
+              </button>
+
+              <button
+                className="sign-up"
+                onClick={() => {
+                  setIsLanguageShown(true);
+                }}
+              >
+                {!lang && "Language"}
+                {lang && `Language: ${lang.name}`}
+              </button>
             </div>
           </>
         )}

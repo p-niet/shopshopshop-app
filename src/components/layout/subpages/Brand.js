@@ -6,11 +6,11 @@ import Pagination from "./Pagination";
 import { useEffect } from "react";
 
 const Brand = ({ lang }) => {
+  let { brand } = useParams();
+
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
-
-  let { brand } = useParams();
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const selectedBrand = brand;
@@ -33,7 +33,7 @@ const Brand = ({ lang }) => {
   return (
     <>
       <div className="categoryName">
-        <h1 className="category-name">Category: {selectedBrand}</h1>
+        <h1 className="category-name">{selectedBrand}</h1>
       </div>
       <div className="product-grid">
         {currentItems.map((products) => {
@@ -47,12 +47,10 @@ const Brand = ({ lang }) => {
                   className="link"
                 >
                   <div className="singlebox">
-                    <img src={imgURL} alt={name} />
+                    <img src={imgURL[0]} alt={name} />
                     <h5>{brand}</h5>
                     <h5 className="productName">{name}</h5>
-                    <h5>
-                      {model} {">"} {category}
-                    </h5>
+                    <h5>{category}</h5>
 
                     <h5 className="singleprice">{price}</h5>
                   </div>

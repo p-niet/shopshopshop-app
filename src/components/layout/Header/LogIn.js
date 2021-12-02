@@ -2,15 +2,33 @@ import React from "react";
 import { useCookies } from "react-cookie";
 import { useState } from "react";
 import { passes } from "../../../api/loginData";
+import { useHistory } from "react-router-dom";
 
-const LogIn = ({ lang, setIsLoginShow }) => {
-  const [cookie, setCookie] = useCookies();
+const LogIn = ({ lang, setIsLoginShow, setName }) => {
+  const history = useHistory();
+
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [cookies, setCookies] = useCookies();
+  const [wrongLogin, setWrongLogin] = useState(false);
 
   const userLogin = "admin";
   const userPassword = "admin123";
+  const name = "Paweł";
+
+  function logIn() {
+    if (login === userLogin && password === userPassword) {
+      setCookies("isLogged", true, { path: "/" });
+      setCookies("justLoggedIn", true, { path: "/" });
+      setName(name);
+      setIsLoginShow(false);
+      setWrongLogin(false);
+    }
+
+    if ((login !== userLogin) | (password !== userPassword)) {
+      setWrongLogin(true);
+    }
+  }
 
   return (
     <>
@@ -40,19 +58,19 @@ const LogIn = ({ lang, setIsLoginShow }) => {
           <input
             type="password"
             className="password-input"
-            onChange={(e) => {
+            onInput={(e) => {
               setPassword(e.target.value);
             }}
           />
+          {wrongLogin === true && (
+            <div className="incorrect-password">
+              <p>Incorrect data!</p>
+            </div>
+          )}
           <input
-            handleSubmit={() => {
-              setCookie("login", true, { path: "/" });
-              setCookie("justLoggedIn", true, { path: "/" });
-
-              if (login === userLogin && password === userPassword) {
-                setCookies("isLogged", true, { path: "/" });
-                setCookie("justLoggedIn", true, { path: "/" });
-              }
+            onClick={(e) => {
+              e.preventDefault();
+              logIn();
             }}
             type="submit"
             className="submit"

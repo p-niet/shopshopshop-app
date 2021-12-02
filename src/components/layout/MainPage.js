@@ -1,29 +1,49 @@
 import React from "react";
-import babskie from "./img/babskie.png";
-import chlopskie from "./img/chlopskie.png";
-import casual from "./img/casual.jpg";
-import ugly from "./img/ugly.jpg";
+import "./mainpage.css";
+import { productData } from "../../api/productData";
+import { Link, useRouteMatch } from "react-router-dom";
 
-const MainPage = () => {
+const babskie = productData[1].imgURL[0];
+const accesories = productData[2].imgURL[0];
+const kids = productData[6].imgURL[0];
+const chlopskie = productData[66].imgURL[0];
+
+const MainPage = ({ lang }) => {
+  let { path } = useRouteMatch();
+
   return (
     <div className="categories-container">
-      <div className="babskie">
-        <img src={babskie} alt="babskie" />
-        <h4>babskie</h4>
+      <div className="babskie" id="zoom-in">
+        <Link to={`/${lang.isoCode}/Women`}>
+          <figure>
+            <img src={babskie} alt="babskie" />
+            <h4>babskie</h4>
+          </figure>
+        </Link>
       </div>
-      <div className="double-vert">
-        <div className="casual">
-          <img src={casual} alt="casua" />
-          <h4>casual looks</h4>
-        </div>
-        <div className="foruglies">
-          <img src={ugly} alt="For uglies" />
-          <h4>for ugly people</h4>
-        </div>
+      <div className="casual" id="zoom-in">
+        <Link to={`/${lang.isoCode}/category/Accesories`}>
+          <figure>
+            <img src={accesories} alt="accesories" />
+            <h4>accesories</h4>
+          </figure>
+        </Link>
       </div>
-      <div className="chlopskie">
-        <img src={chlopskie} alt="chłopskie" />
-        <h4>chłopskie</h4>
+      <div className="foruglies" id="zoom-in">
+        <Link to={`/${lang.isoCode}/Kids`}>
+          <figure>
+            <img src={kids} alt="kids" />
+            <h4>for kids</h4>
+          </figure>
+        </Link>
+      </div>
+      <div className="chlopskie" id="zoom-in">
+        <Link to={`/${lang.isoCode}/Men`}>
+          <figure>
+            <img src={chlopskie} alt="chłopskie" />
+            <h4>chłopskie</h4>
+          </figure>
+        </Link>
       </div>
     </div>
   );

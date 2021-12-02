@@ -55,12 +55,10 @@ const Category = ({ lang }) => {
                   className="link"
                 >
                   <div className="singlebox">
-                    <img src={imgURL} alt={name} />
+                    <img src={imgURL[0]} alt={name} />
                     <h5>{brand}</h5>
                     <h5 className="productName">{name}</h5>
-                    <h5>
-                      {model} {">"} {category}
-                    </h5>
+                    <h5>{category}</h5>
 
                     <h5 className="singleprice">{price}</h5>
                   </div>

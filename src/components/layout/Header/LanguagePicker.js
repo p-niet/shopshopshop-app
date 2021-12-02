@@ -3,7 +3,7 @@ import { languages } from "../../../api/languages";
 import "./header.css";
 import { useCookies } from "react-cookie";
 
-export default function LanguagePicker(isLanguageShown) {
+export default function LanguagePicker({ isLanguageShown }) {
   const [cookies, setCookies] = useCookies(["lang"]);
   return (
     <div className="langs">

@@ -11,12 +11,17 @@ import Brand from "./components/layout/subpages/Brand";
 import Search from "./components/layout/subpages/Search";
 import Type from "./components/layout/subpages/Type";
 import "./components/layout/subpages/grid.css";
+import { useCookies } from "react-cookie";
+import { useEffect } from "react";
 
 function App({ lang }) {
-  // The `path` lets us build <Route> paths that are
-  // relative to the parent route, while the `url` lets
-  // us build relative links.
-  let { path, url } = useRouteMatch();
+  const [cookies, setCookies] = useCookies();
+
+  useEffect(() => {
+    if (!cookies.Language) setCookies("Language", "en", { path: "/" });
+  }, []);
+
+  let { path } = useRouteMatch();
 
   return (
     <div>
@@ -24,7 +29,7 @@ function App({ lang }) {
 
       <Switch>
         <Route exact path={path}>
-          <MainPage />
+          <MainPage lang={lang} />
         </Route>
         <Route
           path={`${path}/product/:productId/:productName`}
@@ -34,7 +39,11 @@ function App({ lang }) {
           path={`${path}/category/:category`}
           children={<Category lang={lang} />}
         ></Route>
-        <Route path={`${path}/:type`} children={<Type lang={lang} />}></Route>
+        <Route
+          exact
+          path={`${path}/:type`}
+          children={<Type lang={lang} />}
+        ></Route>
         <Route
           path={`${path}/brand/:brand`}
           children={<Brand lang={lang} />}

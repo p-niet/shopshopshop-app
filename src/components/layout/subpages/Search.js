@@ -16,14 +16,13 @@ const Search = ({ lang }) => {
   const searchItem = search.toLowerCase();
 
   function setFinalArray() {
-    setItems([
-      ...productData.filter(
-        (el) =>
-          el.brand === searchItem ||
-          el.model === searchItem ||
-          el.name === searchItem
-      ),
-    ]);
+    const newVal = productData.filter(
+      (el) =>
+        el.brand.toLowerCase().includes(searchItem.toLowerCase()) ||
+        el.model.toLowerCase().includes(searchItem.toLowerCase()) ||
+        el.name.toLowerCase().includes(searchItem.toLowerCase())
+    );
+    setItems(newVal);
     return;
   }
 

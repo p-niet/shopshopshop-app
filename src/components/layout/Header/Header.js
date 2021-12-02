@@ -4,10 +4,10 @@ import { ThirdHeaderLayer } from "./ThirdHeaderLayer";
 import MobileHeader from "./MobileHeader";
 import "./header.css";
 import { useHistory } from "react-router-dom";
-import Search from "../subpages/Search";
 import LanguagePicker from "./LanguagePicker";
 import { useCookies } from "react-cookie";
 import LogIn from "./LogIn";
+import { productData } from "../../../api/productData";
 
 const Header = ({ lang }) => {
   let history = useHistory();
@@ -19,6 +19,7 @@ const Header = ({ lang }) => {
   const [input, setInput] = useState("");
   const [isLanguageShown, setIsLanguageShown] = useState(false);
   const [isLoginShown, setIsLoginShow] = useState(false);
+  const [name, setName] = useState(undefined);
 
   const topLevelCategoryData = menuData[topLevelCategorySelected];
   const secondLevelCategoryData =
@@ -43,6 +44,13 @@ const Header = ({ lang }) => {
           isThirdLevelDisplayed={isThirdLevelDisplayed}
           isMobileMenuVisible={isMobileMenuVisible}
           setIsMobileMenuVisible={setIsMobileMenuVisible}
+          lang={lang}
+          isLanguageShown={isLanguageShown}
+          setIsLanguageShown={setIsLanguageShown}
+          name={name}
+          setName={setName}
+          isLoginShown={isLoginShown}
+          setIsLoginShow={setIsLoginShow}
         />
       )}
 
@@ -70,15 +78,26 @@ const Header = ({ lang }) => {
                 >
                   Language: {lang.name}
                 </li>
-                <li
-                  onClick={() => {
-                    setIsLoginShow(true);
-                  }}
-                >
-                  Sign in / Sing up
-                </li>
+                {!name && (
+                  <li
+                    onClick={() => {
+                      setIsLoginShow(true);
+                    }}
+                  >
+                    Sign in / Sing up
+                  </li>
+                )}
+                {name !== undefined && (
+                  <li>
+                    {name} / <span>Log Out</span>
+                  </li>
+                )}
                 {isLoginShown === true && (
-                  <LogIn setIsLoginShow={setIsLoginShow} lang={lang} />
+                  <LogIn
+                    setIsLoginShow={setIsLoginShow}
+                    lang={lang}
+                    setName={setName}
+                  />
                 )}
               </ul>
             </div>
