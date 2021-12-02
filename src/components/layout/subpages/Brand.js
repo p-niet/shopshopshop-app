@@ -22,7 +22,7 @@ const Brand = ({ lang }) => {
 
   useEffect(() => {
     setFinalArray();
-  }, []);
+  }, [brand]);
 
   const numberOfPages = Math.ceil(items.length / itemsPerPage);
 

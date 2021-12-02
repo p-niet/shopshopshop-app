@@ -3,6 +3,7 @@ import { menuData } from "../../../api/menuData.js";
 import "./header.css";
 import LanguagePicker from "./LanguagePicker.js";
 import LogIn from "./LogIn.js";
+import { Link, useHistory } from "react-router-dom";
 
 const MobileHeader = ({
   topLevelCategorySelected,
@@ -22,8 +23,33 @@ const MobileHeader = ({
   setName,
   isLoginShown,
   setIsLoginShow,
+  setType,
+  typedProducts,
+  secondLevelCategorySelected,
 }) => {
+  let history = useHistory();
+
   const topLevelCategoryData = menuData[topLevelCategorySelected];
+
+  const designersMapped = typedProducts.map((obj, idx) => obj.brand);
+  const designers = designersMapped.filter(
+    (brand, idx) => designersMapped.indexOf(brand) === idx
+  );
+
+  const clothingMapped = typedProducts.map((obj, idx) => obj.model);
+  const clothing = clothingMapped.filter(
+    (model, idx) => clothingMapped.indexOf(model) === idx
+  );
+
+  const topDesigners = {};
+  designersMapped.forEach(
+    (brand) => (topDesigners[brand] = (topDesigners[brand] || 0) + 1)
+  );
+
+  const sortedDesigners = Object.keys(topDesigners).sort(
+    (a, b) => topDesigners[b] - topDesigners[a]
+  );
+  sortedDesigners.length = 5;
 
   return (
     <>
@@ -57,6 +83,7 @@ const MobileHeader = ({
                 key={idx}
                 onClick={() => {
                   setTopLevelCategorySelected(idx);
+                  setType(name);
                 }}
               >
                 {name}
@@ -121,26 +148,43 @@ const MobileHeader = ({
             >
               &lt; back
             </h3>
-            <h3>{secondLevelCategoryData.left.name}</h3>
-            {thirdLevelCategoryDataLeft.map((thirdCategory, idx) => {
-              const { name, links } = thirdCategory;
+            {secondLevelCategorySelected === 0 && (
+              <>
+                <h3>Designers</h3>
+                {designers.map((obj, idx) => {
+                  return (
+                    <p
+                      key={idx}
+                      onClick={() =>
+                        history.push(`/${lang.isoCode}/brand/${obj}`)
+                      }
+                    >
+                      {obj}
+                    </p>
+                  );
+                })}{" "}
+              </>
+            )}
 
-              return (
-                <p key={idx} href={links}>
-                  {name}
-                </p>
-              );
-            })}
+            {secondLevelCategorySelected === 1 && (
+              <>
+                <h3>Clothing</h3>
+                {clothing.map((obj, idx) => {
+                  return (
+                    <Link to={`/${lang.isoCode}/brand/${obj}`} id="link">
+                      <p key={idx}>{obj}</p>
+                    </Link>
+                  );
+                })}{" "}
+              </>
+            )}
 
             <h3>{secondLevelCategoryData.middle.name}</h3>
-            {thirdLevelCategoryDataMiddle.map((text, href) => {
-              const { name } = text;
-              const { links } = href;
-
+            {sortedDesigners.map((obj, idx) => {
               return (
-                <p key={name} href={links}>
-                  {name}
-                </p>
+                <Link to={`/${lang.isoCode}/brand/${obj}`} id="link">
+                  <p key={idx}>{obj}</p>
+                </Link>
               );
             })}
           </div>

@@ -88,7 +88,7 @@ const SlimFooter = () => {
             id="email-form"
             placeholder="Vivamus in mi justo..."
           />
-          <input type="submit" value="no okcia, dajesh" />
+          <input type="submit" value="no okcia, dajesh" className="okcia" />
         </div>
         <div className="terms">
           <p>

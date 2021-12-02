@@ -13,12 +13,21 @@ import Type from "./components/layout/subpages/Type";
 import "./components/layout/subpages/grid.css";
 import { useCookies } from "react-cookie";
 import { useEffect } from "react";
+import Cookies from "./components/layout/Cookies";
+import { useState } from "react";
 
 function App({ lang }) {
   const [cookies, setCookies] = useCookies();
+  const [cookiesSet, setCookiesSet] = useState(false);
 
   useEffect(() => {
-    if (!cookies.Language) setCookies("Language", "en", { path: "/" });
+    if (!cookies.Language) {
+      setCookies("Language", "en", { path: "/" });
+    }
+
+    if (cookies.CookieConsent === "yes") {
+      setCookiesSet(true);
+    }
   }, []);
 
   let { path } = useRouteMatch();
@@ -26,6 +35,7 @@ function App({ lang }) {
   return (
     <div>
       <Header lang={lang} />
+      {!cookiesSet && <Cookies setCookiesSet={setCookiesSet} />}
 
       <Switch>
         <Route exact path={path}>

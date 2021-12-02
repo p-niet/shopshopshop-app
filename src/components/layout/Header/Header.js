@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { menuData } from "../../../api/menuData";
 import { ThirdHeaderLayer } from "./ThirdHeaderLayer";
 import MobileHeader from "./MobileHeader";
@@ -20,6 +20,7 @@ const Header = ({ lang }) => {
   const [isLanguageShown, setIsLanguageShown] = useState(false);
   const [isLoginShown, setIsLoginShow] = useState(false);
   const [name, setName] = useState(undefined);
+  const [type, setType] = useState("Women");
 
   const topLevelCategoryData = menuData[topLevelCategorySelected];
   const secondLevelCategoryData =
@@ -29,6 +30,16 @@ const Header = ({ lang }) => {
   const thirdLevelCategoryDataMiddle = secondLevelCategoryData.middle.children;
   const thirdLevelCategoryDataRight = secondLevelCategoryData.right;
   const [cookies] = useCookies();
+
+  const [typedProducts, setTypedProducts] = useState([]);
+
+  function typeProducts() {
+    setTypedProducts([...productData.filter((obj, idx) => obj.type === type)]);
+  }
+
+  useEffect(() => {
+    typeProducts();
+  }, [type]);
 
   return (
     <>
@@ -51,6 +62,9 @@ const Header = ({ lang }) => {
           setName={setName}
           isLoginShown={isLoginShown}
           setIsLoginShow={setIsLoginShow}
+          setType={setType}
+          typedProducts={typedProducts}
+          secondLevelCategorySelected={secondLevelCategorySelected}
         />
       )}
 
@@ -124,6 +138,7 @@ const Header = ({ lang }) => {
                         href={`/${cookies.Language}/${name}`}
                         onMouseEnter={() => {
                           setTopLevelCategorySelected(idx);
+                          setType(name);
                         }}
                       >
                         {name}
@@ -186,6 +201,10 @@ const Header = ({ lang }) => {
                 thirdLevelCategoryDataLeft={thirdLevelCategoryDataLeft}
                 thirdLevelCategoryDataMiddle={thirdLevelCategoryDataMiddle}
                 thirdLevelCategoryDataRight={thirdLevelCategoryDataRight}
+                type={type}
+                typedProducts={typedProducts}
+                lang={lang}
+                secondLevelCategorySelected={secondLevelCategorySelected}
               />
             )}
           </div>

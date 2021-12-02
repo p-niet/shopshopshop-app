@@ -46,27 +46,23 @@ const Search = ({ lang }) => {
           const { id, name, brand, model, category, imgURL, price } = products;
 
           return (
-            brand === searchItem ||
-            model === searchItem ||
-            (name === searchItem && (
-              <article className="product-box" key={id}>
-                <Link
-                  to={`/${lang.isoCode}/product/${id}/${name}`}
-                  className="link"
-                >
-                  <div className="singlebox">
-                    <img src={imgURL} alt={name} />
-                    <h5>{brand}</h5>
-                    <h5 className="productName">{name}</h5>
-                    <h5>
-                      {model} {">"} {category}
-                    </h5>
+            <article className="product-box" key={id}>
+              <Link
+                to={`/${lang.isoCode}/product/${id}/${name}`}
+                className="link"
+              >
+                <div className="singlebox">
+                  <img src={imgURL[0]} alt={name} />
+                  <h5>{brand}</h5>
+                  <h5 className="productName">{name}</h5>
+                  <h5>
+                    {model} {">"} {category}
+                  </h5>
 
-                    <h5 className="singleprice">{price}</h5>
-                  </div>
-                </Link>
-              </article>
-            ))
+                  <h5 className="singleprice">{price}</h5>
+                </div>
+              </Link>
+            </article>
           );
         })}
       </div>

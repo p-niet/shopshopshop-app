@@ -21,7 +21,7 @@ const Category = ({ lang }) => {
 
   useEffect(() => {
     setFinalArray();
-  }, []);
+  }, [category]);
 
   const numberOfPages = Math.ceil(items.length / itemsPerPage);
 
