@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/shopshopshop-app/static/css/main.6224aff9.chunk.css",
+    "main.js": "/shopshopshop-app/static/js/main.b0a321ec.chunk.js",
+    "main.js.map": "/shopshopshop-app/static/js/main.b0a321ec.chunk.js.map",
+    "runtime-main.js": "/shopshopshop-app/static/js/runtime-main.eb414349.js",
+    "runtime-main.js.map": "/shopshopshop-app/static/js/runtime-main.eb414349.js.map",
+    "static/js/2.9298330b.chunk.js": "/shopshopshop-app/static/js/2.9298330b.chunk.js",
+    "static/js/2.9298330b.chunk.js.map": "/shopshopshop-app/static/js/2.9298330b.chunk.js.map",
+    "index.html": "/shopshopshop-app/index.html",
+    "static/css/main.6224aff9.chunk.css.map": "/shopshopshop-app/static/css/main.6224aff9.chunk.css.map",
+    "static/js/2.9298330b.chunk.js.LICENSE.txt": "/shopshopshop-app/static/js/2.9298330b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eb414349.js",
+    "static/js/2.9298330b.chunk.js",
+    "static/css/main.6224aff9.chunk.css",
+    "static/js/main.b0a321ec.chunk.js"
+  ]
+}
