@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./product.css";
 import { productData } from "../../../api/productData";
 import { useState, useEffect } from "react";
@@ -59,15 +59,24 @@ const Product = ({ lang }) => {
           <div className="product-content">
             <div className="history-map">
               <p className="product-history">
-                <a href="/">Home</a> {"> "}
-                <a href={`${lang}/${product.type}`}>{product.type}</a> {"> "}
-                <a href={`${lang}/category/${product.model}`}>
-                  {product.model}
-                </a>{" "}
+                <Link to="/" id="history-link">
+                  <p>Home</p>
+                </Link>{" "}
                 {"> "}
-                <a href={`${lang}/brand/${product.brand}`}>
+                <Link to={`${lang}/${product.type}`} id="history-link">
+                  {product.type}
+                </Link>{" "}
+                {"> "}
+                <Link
+                  to={`${lang}/category/${product.model}`}
+                  id="history-link"
+                >
+                  {product.model}
+                </Link>{" "}
+                {"> "}
+                <Link to={`${lang}/brand/${product.brand}`} id="history-link">
                   {product.brand}
-                </a>{" "}
+                </Link>{" "}
                 {"> "} <p>{product.name}</p>
               </p>
             </div>

@@ -7,7 +7,7 @@ const Cookies = ({ setCookiesSet }) => {
   const [cookies, setCookies] = useCookies();
 
   return (
-    <div className="background-blur">
+    <div className="background-blurr">
       <div className="cookie-message">
         <h3>Cookie consent</h3>
         <p>

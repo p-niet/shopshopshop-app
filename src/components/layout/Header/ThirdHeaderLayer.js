@@ -80,9 +80,9 @@ export const ThirdHeaderLayer = ({
         </div>
         <div className="third-btm">
           <p>
-            <a href={thirdLevelCategoryDataRight.href}>
-              {thirdLevelCategoryDataRight.text}
-            </a>
+            <Link to={`/`} style={{ color: "black" }}>
+              <p>{thirdLevelCategoryDataRight.text}</p>
+            </Link>
           </p>
         </div>
       </div>

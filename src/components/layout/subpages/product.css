@@ -230,3 +230,12 @@
   display: flex;
   flex-direction: column;
 }
+
+#hisotry-link {
+  text-decoration: none;
+  color: black;
+}
+
+#history-link:hover {
+  text-decoration: underline;
+}

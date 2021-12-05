@@ -28,7 +28,7 @@ const Search = ({ lang }) => {
 
   useEffect(() => {
     setFinalArray();
-  }, []);
+  }, [search]);
 
   const numberOfPages = Math.ceil(items.length / itemsPerPage);
 

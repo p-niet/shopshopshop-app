@@ -3,13 +3,13 @@ import { menuData } from "../../../api/menuData";
 import { ThirdHeaderLayer } from "./ThirdHeaderLayer";
 import MobileHeader from "./MobileHeader";
 import "./header.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import LanguagePicker from "./LanguagePicker";
 import { useCookies } from "react-cookie";
 import LogIn from "./LogIn";
 import { productData } from "../../../api/productData";
 
-const Header = ({ lang }) => {
+const Header = ({ lang, subscribe }) => {
   let history = useHistory();
 
   const [topLevelCategorySelected, setTopLevelCategorySelected] = useState(0);
@@ -79,9 +79,15 @@ const Header = ({ lang }) => {
                 setIsMobileMenuVisible(true);
               }}
             ></img>
-            <p>Subscribe</p>
+            <p
+              onClick={() => {
+                subscribe.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Subscribe
+            </p>
             <h1>
-              <a href="/">SHOPSHOPSHOP</a>
+              <Link to="/">SHOPSHOPSHOP</Link>
             </h1>
             <div className="options">
               <ul>
@@ -98,7 +104,7 @@ const Header = ({ lang }) => {
                       setIsLoginShow(true);
                     }}
                   >
-                    Sign in / Sing up
+                    Log in
                   </li>
                 )}
                 {name !== undefined && (
@@ -134,15 +140,15 @@ const Header = ({ lang }) => {
 
                   return (
                     <li key={idx}>
-                      <a
-                        href={`/${cookies.Language}/${name}`}
+                      <Link
+                        to={`/${cookies.Language}/${name}`}
                         onMouseEnter={() => {
                           setTopLevelCategorySelected(idx);
                           setType(name);
                         }}
                       >
                         {name}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}

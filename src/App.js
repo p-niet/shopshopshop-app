@@ -19,6 +19,7 @@ import { useState } from "react";
 function App({ lang }) {
   const [cookies, setCookies] = useCookies();
   const [cookiesSet, setCookiesSet] = useState(false);
+  const [subscribe, setSubscribe] = useState();
 
   useEffect(() => {
     if (!cookies.Language) {
@@ -34,7 +35,7 @@ function App({ lang }) {
 
   return (
     <div>
-      <Header lang={lang} />
+      <Header lang={lang} subscribe={subscribe} />
       {!cookiesSet && <Cookies setCookiesSet={setCookiesSet} />}
 
       <Switch>
@@ -93,7 +94,7 @@ function App({ lang }) {
           <br />
         </Route>
       </Switch>
-      <SlimFooter />
+      <SlimFooter setSubscribe={setSubscribe} />
       <WideFooter />
       <WideFooterMobile />
     </div>

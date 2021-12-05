@@ -365,6 +365,7 @@ body {
 .footer-slim .btm .email #email-form {
   padding: 0 50px;
   width: 90%;
+  text-align: center;
 }
 
 .footer-slim .btm .terms p {

@@ -15,7 +15,7 @@ export default function Router() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={`/shopshopshop-app`}>
         <Switch>
           <Route exact path="/">
             <App lang={cookieLang} />

@@ -22,7 +22,7 @@ function Type({ lang }) {
 
   useEffect(() => {
     setFinalArray();
-  }, []);
+  }, [type]);
 
   const numberOfPages = Math.ceil(items.length / itemsPerPage);
 

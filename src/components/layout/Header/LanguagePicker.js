@@ -2,6 +2,7 @@ import React from "react";
 import { languages } from "../../../api/languages";
 import "./header.css";
 import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
 
 export default function LanguagePicker({ isLanguageShown }) {
   const [cookies, setCookies] = useCookies(["lang"]);
@@ -10,14 +11,15 @@ export default function LanguagePicker({ isLanguageShown }) {
       {languages.map((lang) => {
         return (
           <div>
-            <a
-              href={`/${lang.isoCode}`}
-              onClick={() => {
-                setCookies("Language", lang.isoCode, { path: "/" });
-              }}
-            >
-              <p className="lang-option">{lang.name}</p>
-            </a>
+            <Link to={`/${lang.isoCode}`}>
+              <p
+                onClick={() => {
+                  setCookies("Language", lang.isoCode, { path: "/" });
+                }}
+              >
+                <p className="lang-option">{lang.name}</p>
+              </p>
+            </Link>
           </div>
         );
       })}

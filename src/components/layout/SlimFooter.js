@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const SlimFooter = () => {
+const SlimFooter = ({ setSubscribe }) => {
+  useEffect(() => {
+    setSubscribe(document.querySelector("#subscribe"));
+  });
+
   return (
     <div className="footer-slim">
       <div className="top">
@@ -15,7 +20,10 @@ const SlimFooter = () => {
           </p>
           <p className="more">
             Suspendisse ut augue blandit neque{" "}
-            <a href="!#">consectetur tempus</a>.
+            <Link to="/" style={{ color: "black" }}>
+              <p>consectetur tempus</p>
+            </Link>
+            .
           </p>
         </div>
         <div className="reviews">
@@ -29,7 +37,10 @@ const SlimFooter = () => {
           </p>
           <p className="more">
             Morbi purus eros, viverra eget molestie sed,{" "}
-            <a href="!#">hendrerit quis est</a>.
+            <Link to="/" style={{ color: "black" }}>
+              <p>hendrerit quis est</p>
+            </Link>
+            .
           </p>
         </div>
       </div>
@@ -69,17 +80,17 @@ const SlimFooter = () => {
         </div>
       </div>
       <div className="btm">
-        <div className="subscribe">
+        <div className="subscribe" id="subscribe">
           <p>
             Sed non gravida ligula. Nam viverra neque vitae imperdiet euismod.
           </p>
         </div>
         <div className="genderpick">
-          <input type="radio" id="women" value="women" />
+          <input type="radio" id="women" value="women" name="gender" />
           <label for="woman">woman</label>
-          <input type="radio" id="men" value="men" />
+          <input type="radio" id="men" value="men" name="gender" />
           <label for="man">man</label>
-          <input type="radio" id="both" value="both" />
+          <input type="radio" id="both" value="both" name="gender" />
           <label for="both">both</label>
         </div>
         <div className="email">
@@ -88,7 +99,7 @@ const SlimFooter = () => {
             id="email-form"
             placeholder="Vivamus in mi justo..."
           />
-          <input type="submit" value="no okcia, dajesh" className="okcia" />
+          <input type="submit" value="Submit" className="okcia" />
         </div>
         <div className="terms">
           <p>
